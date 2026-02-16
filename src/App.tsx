@@ -4,7 +4,22 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Progress } from '@/components/ui/progress'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Switch } from '@/components/ui/switch'
+import { Slider } from '@/components/ui/slider'
 import { MoleculeViewer } from '@/components/MoleculeViewer'
+import { TrainingSimulator } from '@/components/TrainingSimulator'
+import { PerformanceDashboard } from '@/components/PerformanceDashboard'
+import { CaseLibrary } from '@/components/CaseLibrary'
+import { AchievementSystem } from '@/components/AchievementSystem'
+import { ComparisonTool } from '@/components/ComparisonTool'
+import { ROICalculator } from '@/components/ROICalculator'
+import { TestimonialsSection } from '@/components/TestimonialsSection'
+import { PricingSection } from '@/components/PricingSection'
+import { useKV } from '@github/spark/hooks'
 import { 
   Atom, 
   CubeFocus, 
@@ -18,7 +33,13 @@ import {
   Hand,
   Lightning,
   Target,
-  Scissors
+  Scissors,
+  Trophy,
+  BookOpen,
+  Play,
+  Calculator,
+  ChartBar,
+  UsersFour
 } from '@phosphor-icons/react'
 
 function AnimatedCounter({ value, duration = 2000 }: { value: number; duration?: number }) {
@@ -99,18 +120,19 @@ function HeroSection() {
               <Button 
                 size="lg" 
                 className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity text-lg h-14 px-8"
-                onClick={() => document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => document.getElementById('simulator')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                See the Demo
-                <ArrowRight className="ml-2" weight="bold" />
+                Try Live Simulator
+                <Play className="ml-2" weight="fill" />
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
                 className="text-lg h-14 px-8 border-2"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Get in Touch
+                See 3D Demo
+                <ArrowRight className="ml-2" weight="bold" />
               </Button>
             </div>
 
@@ -224,6 +246,34 @@ function ProblemSection() {
   )
 }
 
+function SimulatorSection() {
+  return (
+    <section id="simulator" className="py-24 md:py-32 bg-muted/30">
+      <div className="container max-w-7xl mx-auto px-6">
+        <FadeInSection>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
+              <Play className="mr-2" weight="fill" />
+              Interactive Experience
+            </Badge>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Try the Training Simulator
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Experience MX Ink precision firsthand. Practice nanoscale surgical techniques 
+              with real-time feedback and performance metrics.
+            </p>
+          </div>
+        </FadeInSection>
+
+        <FadeInSection delay={0.2}>
+          <TrainingSimulator />
+        </FadeInSection>
+      </div>
+    </section>
+  )
+}
+
 function SolutionSection() {
   const features = [
     {
@@ -259,7 +309,7 @@ function SolutionSection() {
   ]
 
   return (
-    <section id="demo" className="py-24 md:py-32 bg-muted/30">
+    <section id="demo" className="py-24 md:py-32">
       <div className="container max-w-7xl mx-auto px-6">
         <FadeInSection>
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -305,6 +355,118 @@ function SolutionSection() {
   )
 }
 
+function CaseLibrarySection() {
+  return (
+    <section id="cases" className="py-24 md:py-32 bg-muted/30">
+      <div className="container max-w-7xl mx-auto px-6">
+        <FadeInSection>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <Badge className="mb-4">
+              <BookOpen className="mr-2" weight="fill" />
+              Training Content
+            </Badge>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Comprehensive Case Library
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Access thousands of surgical scenarios across specialties. From routine 
+              procedures to rare emergency cases.
+            </p>
+          </div>
+        </FadeInSection>
+
+        <FadeInSection delay={0.2}>
+          <CaseLibrary />
+        </FadeInSection>
+      </div>
+    </section>
+  )
+}
+
+function PerformanceSection() {
+  return (
+    <section id="performance" className="py-24 md:py-32">
+      <div className="container max-w-7xl mx-auto px-6">
+        <FadeInSection>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <Badge className="mb-4">
+              <ChartBar className="mr-2" weight="fill" />
+              Training Analytics
+            </Badge>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Measurable Skill Development
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Track progress with comprehensive analytics. See improvement across precision, 
+              speed, technique, and decision-making.
+            </p>
+          </div>
+        </FadeInSection>
+
+        <FadeInSection delay={0.2}>
+          <PerformanceDashboard />
+        </FadeInSection>
+      </div>
+    </section>
+  )
+}
+
+function AchievementSection() {
+  return (
+    <section className="py-24 md:py-32 bg-muted/30">
+      <div className="container max-w-7xl mx-auto px-6">
+        <FadeInSection>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <Badge className="mb-4">
+              <Trophy className="mr-2" weight="fill" />
+              Gamified Learning
+            </Badge>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Progress That Motivates
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Earn achievements, unlock advanced techniques, and compete on leaderboards. 
+              Making surgical excellence engaging.
+            </p>
+          </div>
+        </FadeInSection>
+
+        <FadeInSection delay={0.2}>
+          <AchievementSystem />
+        </FadeInSection>
+      </div>
+    </section>
+  )
+}
+
+function ComparisonSection() {
+  return (
+    <section className="py-24 md:py-32">
+      <div className="container max-w-7xl mx-auto px-6">
+        <FadeInSection>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <Badge className="mb-4">
+              <Target className="mr-2" weight="fill" />
+              The Difference
+            </Badge>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Traditional vs MolecuSculpt
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              See how our platform outperforms conventional training methods across 
+              every critical metric.
+            </p>
+          </div>
+        </FadeInSection>
+
+        <FadeInSection delay={0.2}>
+          <ComparisonTool />
+        </FadeInSection>
+      </div>
+    </section>
+  )
+}
+
 function TechnologySection() {
   const capabilities = [
     {
@@ -330,7 +492,7 @@ function TechnologySection() {
   ]
 
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-24 md:py-32 bg-muted/30">
       <div className="container max-w-7xl mx-auto px-6">
         <FadeInSection>
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -392,6 +554,34 @@ function TechnologySection() {
               </div>
             </div>
           </div>
+        </FadeInSection>
+      </div>
+    </section>
+  )
+}
+
+function ROISection() {
+  return (
+    <section id="roi" className="py-24 md:py-32">
+      <div className="container max-w-7xl mx-auto px-6">
+        <FadeInSection>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <Badge className="mb-4">
+              <Calculator className="mr-2" weight="fill" />
+              Financial Impact
+            </Badge>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Calculate Your ROI
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              See how MolecuSculpt delivers measurable cost savings and training efficiency 
+              gains for your institution.
+            </p>
+          </div>
+        </FadeInSection>
+
+        <FadeInSection delay={0.2}>
+          <ROICalculator />
         </FadeInSection>
       </div>
     </section>
@@ -626,8 +816,16 @@ function App() {
     <div className="min-h-screen">
       <HeroSection />
       <ProblemSection />
+      <SimulatorSection />
       <SolutionSection />
+      <CaseLibrarySection />
+      <PerformanceSection />
+      <AchievementSection />
+      <ComparisonSection />
       <TechnologySection />
+      <TestimonialsSection />
+      <PricingSection />
+      <ROISection />
       <MarketSection />
       <TeamSection />
       <CTASection />
