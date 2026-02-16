@@ -27,11 +27,11 @@ A dynamic interactive pitch deck showcasing "MolecuSculpt" - a revolutionary mol
 - **Success criteria**: Numbers animate smoothly, content is scannable in 10 seconds
 
 ### The Solution: MolecuSculpt Demo
-- **Functionality**: Video/animation showcase with feature callouts
-- **Purpose**: Demonstrate the actual application and MX Ink integration
-- **Trigger**: User reaches section or clicks play
-- **Progression**: Feature highlight activates → Visual demonstration plays → Key capabilities annotated → User can pause/replay
-- **Success criteria**: Clear value proposition visible without sound, under 30 seconds
+- **Functionality**: Interactive 3D molecular visualization using Three.js with real-time controls
+- **Purpose**: Demonstrate the actual molecular-scale precision and MX Ink integration capabilities
+- **Trigger**: User reaches section, molecule automatically begins rotating
+- **Progression**: Section scrolls into view → 3D molecule renders and rotates → User can hover to manually control rotation → Playback controls adjust speed → Element legend identifies molecular structure
+- **Success criteria**: 60fps smooth rendering, responsive mouse interaction, clear visual hierarchy, works across devices
 
 ### Technology Stack Showcase
 - **Functionality**: Interactive cards displaying MX Ink capabilities
@@ -125,7 +125,7 @@ Core animation principles:
   - **Dialog**: Expanded feature details or video player overlay
   
 - **Customizations**:
-  - **3D Molecular Viewer**: Custom component using CSS transforms for rotating molecule visualization
+  - **3D Molecular Viewer**: Custom Three.js component rendering interactive DNA fragment with WebGL, featuring dynamic lighting, particle effects, and mouse-based camera controls
   - **Animated Counter**: Custom hook for counting animations on statistics
   - **Progress Indicator**: Vertical timeline showing pitch progress as user scrolls
   - **Feature Spotlight**: Animated spotlight effect following cursor over feature grid

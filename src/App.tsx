@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
+import { MoleculeViewer } from '@/components/MoleculeViewer'
 import { 
   Atom, 
   CubeFocus, 
@@ -278,26 +279,8 @@ function SolutionSection() {
 
         <FadeInSection delay={0.2}>
           <div className="mb-16 rounded-3xl overflow-hidden shadow-2xl border-2 border-primary/20">
-            <div className="aspect-video bg-gradient-to-br from-secondary via-primary/20 to-accent/20 flex items-center justify-center relative overflow-hidden">
-              <div className="absolute inset-0 molecular-grid opacity-20" />
-              <div className="relative z-10 text-center space-y-4 p-8">
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                >
-                  <Atom size={120} weight="duotone" className="mx-auto text-primary-foreground opacity-80" />
-                </motion.div>
-                <p className="text-xl text-primary-foreground font-semibold">
-                  Interactive Demo Experience
-                </p>
-                <p className="text-primary-foreground/80">
-                  Watch surgeons navigate a virtual cellular environment with MX Ink precision
-                </p>
-                <Button size="lg" className="mt-4 bg-background text-foreground hover:bg-background/90">
-                  <ArrowRight className="mr-2" weight="bold" />
-                  Launch Full Demo
-                </Button>
-              </div>
+            <div className="aspect-video bg-gradient-to-br from-[oklch(0.15_0.05_240)] to-[oklch(0.08_0.03_220)] relative">
+              <MoleculeViewer />
             </div>
           </div>
         </FadeInSection>
