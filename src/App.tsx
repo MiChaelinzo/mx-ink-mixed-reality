@@ -1,6 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -26,7 +25,7 @@ function AnimatedCounter({ value, duration = 2000 }: { value: number; duration?:
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
 
-  useState(() => {
+  useEffect(() => {
     if (!isInView) return
 
     let startTime: number
@@ -43,7 +42,7 @@ function AnimatedCounter({ value, duration = 2000 }: { value: number; duration?:
     }
 
     requestAnimationFrame(animate)
-  })
+  }, [isInView, duration, value])
 
   return <span ref={ref}>{count}</span>
 }
