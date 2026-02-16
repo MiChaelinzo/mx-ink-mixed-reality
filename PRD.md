@@ -27,11 +27,11 @@ A dynamic interactive pitch deck showcasing "MolecuSculpt" - a revolutionary mol
 - **Success criteria**: Numbers animate smoothly, content is scannable in 10 seconds
 
 ### The Solution: MolecuSculpt Demo
-- **Functionality**: Interactive 3D molecular visualization using Three.js with real-time controls
-- **Purpose**: Demonstrate the actual molecular-scale precision and MX Ink integration capabilities
+- **Functionality**: Interactive 3D molecular visualization using Three.js with real-time controls and multiple complex molecular structures (DNA, Hemoglobin protein, Insulin hormone, Catalase enzyme)
+- **Purpose**: Demonstrate the actual molecular-scale precision and MX Ink integration capabilities across different biological structures
 - **Trigger**: User reaches section, molecule automatically begins rotating
-- **Progression**: Section scrolls into view → 3D molecule renders and rotates → User can hover to manually control rotation → Playback controls adjust speed → Element legend identifies molecular structure
-- **Success criteria**: 60fps smooth rendering, responsive mouse interaction, clear visual hierarchy, works across devices
+- **Progression**: Section scrolls into view → 3D molecule renders and rotates → User can select different molecules via buttons → User can hover to manually control rotation → Playback controls adjust speed → Element legend identifies molecular structure with elements including Carbon, Nitrogen, Oxygen, Phosphorus, Sulfur, and Iron
+- **Success criteria**: 60fps smooth rendering, responsive mouse interaction, seamless molecule switching, clear visual hierarchy, works across devices
 
 ### Technology Stack Showcase
 - **Functionality**: Interactive cards displaying MX Ink capabilities
@@ -125,7 +125,11 @@ Core animation principles:
   - **Dialog**: Expanded feature details or video player overlay
   
 - **Customizations**:
-  - **3D Molecular Viewer**: Custom Three.js component rendering interactive DNA fragment with WebGL, featuring dynamic lighting, particle effects, and mouse-based camera controls
+  - **3D Molecular Viewer**: Custom Three.js component rendering interactive complex molecular structures with WebGL, featuring dynamic lighting, particle effects, mouse-based camera controls, and multiple selectable molecules:
+    - **DNA Fragment**: Double helix structure showing base pairs and phosphate backbone
+    - **Hemoglobin Protein**: Oxygen-carrying protein with iron-containing heme groups
+    - **Insulin Hormone**: Peptide hormone structure regulating glucose metabolism
+    - **Catalase Enzyme**: Active site showing enzyme that breaks down hydrogen peroxide
   - **Animated Counter**: Custom hook for counting animations on statistics
   - **Progress Indicator**: Vertical timeline showing pitch progress as user scrolls
   - **Feature Spotlight**: Animated spotlight effect following cursor over feature grid
@@ -137,6 +141,10 @@ Core animation principles:
   
 - **Icon Selection**:
   - **Atom** (PhosphorIcon): Molecular structures and science
+  - **Dna**: DNA and genetic structures
+  - **Drop**: Hemoglobin and blood proteins
+  - **Pill**: Insulin and hormones
+  - **Lightning**: Catalase and enzyme activity
   - **CubeFocus**: Precision targeting and MX Ink accuracy
   - **ChartLine**: Market data and growth metrics
   - **Users**: Team and collaboration features
